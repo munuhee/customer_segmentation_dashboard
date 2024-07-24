@@ -31,7 +31,9 @@ def preprocess_data(df):
 
     # Standardize features
     scaler = StandardScaler()
-    df_agg[['TotalSpend', 'Frequency', 'Recency']] = scaler.fit_transform(df_agg[['TotalSpend', 'Frequency', 'Recency']])
+    df_agg[['TotalSpend', 'Frequency', 'Recency']] = scaler.fit_transform(
+        df_agg[['TotalSpend', 'Frequency', 'Recency']]
+    )
 
     return df_agg
 
@@ -45,7 +47,9 @@ if __name__ == "__main__":
     try:
         df = load_data(filepath)
         df_agg = preprocess_data(df)
-        df_agg.to_csv(current_dir.parent / 'data' / 'customer_data_preprocessed.csv', index=True)
+        df_agg.to_csv(
+            current_dir.parent / 'data' / 'customer_data_preprocessed.csv', index=True
+        )
         print("Data preprocessing complete.")
     except Exception as e:
         print(f"An error occurred: {e}")
